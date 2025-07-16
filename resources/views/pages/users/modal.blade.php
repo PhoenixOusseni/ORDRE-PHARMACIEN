@@ -321,3 +321,71 @@
         </div>
     </div>
 </div>
+
+{{-- Modal add diplomes --}}
+<div class="modal fade" id="addDipBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-default">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ajouter autres diplomes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form method="POST" action="{{ route('gestion_diplome.store') }}">
+                        @csrf
+                        <input type="text" name="user_id" value="{{ $finds->id }}" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Natures diplomes</label>
+                            <input type="text" class="form-control" name="nature" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date optention</label>
+                            <input type="date" class="form-control" name="date_diplome" required>
+                        </div>
+                        <hr>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-success">Ajouter</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Modal add an a fonction --}}
+<div class="modal fade" id="addFoctBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-default">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ajouter une fonction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form method="POST" action="{{ route('gestion_fonction.store') }}">
+                        @csrf
+                        <input type="text" name="user_id" value="{{ $finds->id }}" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Libelle de fonction</label>
+                            <input type="text" class="form-control" name="libelle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date d'occupation</label>
+                            <input type="date" class="form-control" name="date" required>
+                        </div>
+                        <hr>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-success">Ajouter</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

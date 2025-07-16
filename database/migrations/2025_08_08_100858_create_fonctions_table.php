@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('libelle')->nullable();
             $table->date('date')->nullable();
+
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

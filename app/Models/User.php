@@ -40,6 +40,16 @@ class User extends Authenticatable
         return $this->hasMany(Cotisation::class);
     }
 
+    function AutreDiplome() {
+        return $this->hasMany(AutreDiplome::class);
+    }
+
+    function Fonction() {
+        return $this->hasMany(Fonction::class);
+    }
+
+
+
     /**
      * The attributes that are mass assignable.
      *

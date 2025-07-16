@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AutreDiplomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CotisationController;
+use App\Http\Controllers\FonctionController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -28,6 +30,10 @@ Route::post('change_user_role/{id}', [UserController::class, 'change_role']);
 Route::resource('gestion_cotisations', CotisationController::class);
 Route::get('Filter/date_filter', [CotisationController::class, 'date_filter'])->name('date_filter');
 Route::get('impression/print_cotisation/{id}', [CotisationController::class, 'print']);
+
+Route::resource('gestion_diplome', AutreDiplomeController::class);
+
+Route::resource('gestion_fonction', FonctionController::class);
 
 Route::post('add_user', [AuthController::class, 'add_user'])->name('register');
 Route::post('connexion', [AuthController::class, 'login'])->name('login');

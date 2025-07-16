@@ -29,7 +29,20 @@ class FonctionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'intitule' => 'required|string|max:255',
+        //     'date_debut' => 'required|date',
+        //     'date' => 'nullable|date|after_or_equal:date',
+        //     'user_id' => 'required|exists:users,id',
+        // ]);
+
+        Fonction::create([
+            'libelle' => $request->libelle,
+            'date' => $request->date,
+            'user_id' => $request->user_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Fonction ajoutée avec succès.');
     }
 
     /**

@@ -25,7 +25,6 @@
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <!-- Étape 1 : Infos perso -->
         <div id="step-1" class="step active">
             <div class="row mb-3">

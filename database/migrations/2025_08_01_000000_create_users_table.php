@@ -49,8 +49,6 @@ return new class extends Migration
             $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('province_id')->nullable()->constrained('provinces')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('commune_id')->nullable()->constrained('communes')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('autre_diplome_id')->nullable()->constrained('autre_diplomes')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('fonction_id')->nullable()->constrained('fonctions')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('password')->nullable();
             $table->rememberToken();

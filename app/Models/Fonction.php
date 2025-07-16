@@ -11,6 +11,6 @@ class Fonction extends Model
     ];
 
     function User() {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

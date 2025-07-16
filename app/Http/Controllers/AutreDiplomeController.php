@@ -29,7 +29,19 @@ class AutreDiplomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'nature' => 'required|string|max:255',
+        //     'date_diplome' => 'required|date',
+        //     'user_id' => 'required|exists:users,id',
+        // ]);
+
+        AutreDiplome::create([
+            'nature' => $request->nature,
+            'date_diplome' => $request->date_diplome,
+            'user_id' => $request->user_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Diplôme ajouté avec succès.');
     }
 
     /**

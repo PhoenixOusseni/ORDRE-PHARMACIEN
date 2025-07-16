@@ -18,12 +18,24 @@
                                         <div class="col-lg-12 col-md-12">
                                             <div class="mb-3">
                                                 <label>Attribuer un role<span class="text-danger">*</span></label>
-                                                <select class="form-control" name="role_id" required>
+                                                <select class="form-select" name="role_id" required>
                                                     <option>Selectionner ici...</option>
                                                     @foreach (App\Models\Role::all() as $item)
                                                         <option value="{{ $item->id }}"
                                                             {{ $item->id == $item->role_id ? 'selected' : '' }}>
                                                             {{ $item->libelle }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="mb-3">
+                                                <label>Région ordinale<span class="text-danger">*</span></label>
+                                                <select name="region_ordinal_id" class="form-select">
+                                                    <option>Selectionner ici...</option>
+                                                    @foreach (App\Models\RegionOrdinal::all() as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->libelle }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>

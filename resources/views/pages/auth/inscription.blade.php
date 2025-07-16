@@ -66,6 +66,13 @@
                 </div>
             @endif
 
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    <span><img src="{{ asset('assets/img/close.svg') }}" alt=""></span><span style="color: rgb(242, 96, 96)">Echec !</span>
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <h2 class="mb-4 text-center text-success">Créer un compte</h2>
 
             <!-- Étapes visuelles -->
@@ -106,16 +113,27 @@
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
                 <!-- Étape 1 -->
+                <p class="text-danger"><em>Les champs avec etoiles(*) sont obligatoir !</em></p>
                 <div id="step-1" class="step active">
                     <input type="text" class="form-control" name="role_id" value="1" hidden>
                     <input type="text" class="form-control" name="statut" value="En cours" hidden>
+                    <div class="row p-2 mb-3" style="background: #d4d9dd">
+                        <div class="col-md-6 mb-3">
+                            <label>Région ordinale<span class="text-danger">*</span></label>
+                            <select name="region_ordinal_id" class="form-select">
+                                @foreach (App\Models\RegionOrdinal::all() as $item)
+                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Nom</label>
+                            <label>Nom<span class="text-danger">*</span></label>
                             <input type="text" name="nom" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Prénom(s)</label>
+                            <label>Prénom(s)<span class="text-danger">*</span></label>
                             <input type="text" name="prenom" class="form-control" required>
                         </div>
                     </div>
@@ -125,17 +143,17 @@
                             <input type="text" name="nom_jeune_fille" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <label>Date de naissance</label>
+                            <label>Date de naissance<span class="text-danger">*</span></label>
                             <input type="date" name="date_naiss" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Lieu de naissance</label>
+                            <label>Lieu de naissance<span class="text-danger">*</span></label>
                             <input type="text" name="lieu_naiss" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Nationalité</label>
+                            <label>Nationalité<span class="text-danger">*</span></label>
                             <input type="text" name="nationalite" class="form-control" required>
                         </div>
                     </div>
@@ -186,21 +204,22 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Email</label>
+                            <label>Email<span class="text-danger">*</span></label>
                             <input type="email" name="email" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Télephone</label>
+                            <label>Télephone<span class="text-danger">*</span></label>
                             <input type="text" name="telephone" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>N° Matricule</label>
-                            <input type="text" name="matricule" class="form-control" required>
+                            <label>N° Matricule<span class="text-danger"><em> (Pour les fonctionnaires)
+                                    </em></span></label>
+                            <input type="text" name="matricule" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <label>Lieu d'exercice</label>
+                            <label>Lieu d'exercice<span class="text-danger">*</span></label>
                             <input type="text" name="lieu_exercice" class="form-control" required>
                         </div>
                     </div>
@@ -214,36 +233,36 @@
                 <div id="step-3" class="step">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Diplome</label>
+                            <label>Diplome<span class="text-danger">* <em>(En format pdf)</em></span></label>
                             <input type="file" name="diplome" class="form-control" accept=".pdf" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Date d'obtention</label>
+                            <label>Date d'obtention<span class="text-danger">*</span></label>
                             <input type="date" name="date_diplome" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Institution ayant délivré</label>
+                            <label>Institution ayant délivré<span class="text-danger">*</span></label>
                             <input type="text" name="inst_delivre" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label>Lieu de délivrance</label>
-                            <input type="text" name="lieu_delivrance" class="form-control" required>
+                            <input type="text" name="lieu_delivrance" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Section</label>
-                            <select name="section_id" class="form-control">
+                            <select name="section_id" class="form-select">
                                 @foreach (App\Models\Section::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>Pièces jointes</label>
-                            <input type="file" name="file" class="form-control" accept=".pdf">
+                            <label>Pièces jointes<span class="text-danger">* <em>(En format pdf)</em></span></label>
+                            <input type="file" name="file" class="form-control" accept=".pdf" required>
                             <p>
                                 <span>1. Un extrait d'acte de naissance</span>
                                 <br>
@@ -257,8 +276,9 @@
                                 <span>5.Un certificat d'aptitude médical</span>
                             </p>
                             <p class="text-danger text-italic">
-                                <strong>Note :</strong> Les pièces jointes doivent être au format PDF et ne pas dépasser 2
-                                Mo.
+                                <strong>Note :</strong> <em>Les pièces jointes doivent être au format PDF et ne pas dépasser
+                                    5
+                                    Mo.</em>
                             </p>
                         </div>
                     </div>
@@ -272,16 +292,8 @@
                 <div id="step-4" class="step">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Région ordinale</label>
-                            <select name="region_ordinal_id" class="form-control">
-                                @foreach (App\Models\RegionOrdinal::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
                             <label>Région</label>
-                            <select name="region_id" class="form-control">
+                            <select name="region_id" class="form-select">
                                 @foreach (App\Models\Region::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
@@ -291,7 +303,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Province</label>
-                            <select name="province_id" class="form-control">
+                            <select name="province_id" class="form-select">
                                 @foreach (App\Models\Province::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
@@ -299,7 +311,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>Commune</label>
-                            <select name="commune_id" class="form-control">
+                            <select name="commune_id" class="form-select">
                                 @foreach (App\Models\Commune::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
@@ -315,14 +327,19 @@
                 <!-- Étape 4 -->
                 <div id="step-5" class="step">
                     <h5 class="mb-4 text-success">Récapitulatif</h5>
-                    <ul class="list-group mb-4">
-                        <li class="list-group-item"><strong>Nom :</strong> <span id="recap-nom"></span></li>
-                        <li class="list-group-item"><strong>Email :</strong> <span id="recap-prenom"></span></li>
-                        <li class="list-group-item"><strong>Téléphone :</strong> <span id="recap-telephone"></span></li>
-                        <li class="list-group-item"><strong>Pays :</strong> <span id="recap-date_naiss"></span></li>
-                        <li class="list-group-item"><strong>Société :</strong> <span id="recap-lieu_naiss"></span></li>
-                        <li class="list-group-item"><strong>Rôle :</strong> <span id="recap-nationalite"></span></li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Nom:</strong> <span id="recap-nom"></span></p>
+                            <p><strong>Prénom(s):</strong> <span id="recap-prenom"></span></p>
+                            <p><strong>Téléphone:</strong> <span id="recap-telephone"></span></p>
+                            <p><strong>Date de naissance:</strong> <span id="recap-date_naiss"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Lieu de naissance:</strong> <span id="recap-lieu_naiss"></span></p>
+                            <p><strong>Nationalité:</strong> <span id="recap-nationalite"></span></p>
+                            <p><strong>Email:</strong> <span id="recap-email"></span></p>
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Precedant</button>
                         <button type="submit" class="btn btn-success">Valider l'inscription</button>
@@ -428,8 +445,9 @@
                 document.getElementById('recap-telephone').innerText = document.querySelector('[name="telephone"]').value;
                 document.getElementById('recap-date_naiss').innerText = document.querySelector('[name="date_naiss"]').value;
                 document.getElementById('recap-lieu_naiss').innerText = document.querySelector('[name="lieu_naiss"]').value;
-                document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]')
-                    .value;
+                document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]').value;
+                document.getElementById('recap-email').innerText = document.querySelector('[name="email"]').value;
+                // Ajouter d'autres champs récapitulatifs si nécessaire
             }
 
             showStep(step);

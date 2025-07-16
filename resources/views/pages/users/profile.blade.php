@@ -109,6 +109,65 @@
                     </div>
                 </div>
 
+                <!-- 🎓 SECTION 3 : Autre Diplômes et fonction -->
+                <div class="mb-4">
+                    <h5 class="text-success border-bottom pb-2 mb-3">🎓 Autres diplome et Fonction</h5>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <h4 class="text-center">Autres diplomes <span><a class="badge bg-success"
+                                        style="font-size: 10px;" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#addDipBackdrop">Ajouter un diplome</a></span></h4>
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nature diplôme</th>
+                                        <th>Date d'obtention</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($autres_diplomes as $item)
+                                        <tr>
+                                            <td>{{ $item->nature }}</td>
+                                            <td>{{ $item->date_diplome }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center text-danger"><em>Aucun autre diplôme
+                                                    enregistré</em></td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-center">Fonctions <span><a class="badge bg-success" style="font-size: 10px;"
+                                        href="#" data-bs-toggle="modal" data-bs-target="#addFoctBackdrop">Ajouter une
+                                        fonction</a></span></h4>
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Libelle fonction</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($fonctions as $item)
+                                        <tr>
+                                            <td>{{ $item->libelle }}</td>
+                                            <td>{{ $item->date }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center text-danger"><em>Aucun fonction
+                                                    enregistré</em></td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-start gap-2 mt-4">
                     <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editBackdrop">Modifier
                         mon compte</button>
@@ -117,7 +176,7 @@
         </div>
     </div>
 
-    <!-- Modal photo -->
+    <!-- Modal profile -->
     @include('pages.users.modal')
 @endsection
 
@@ -219,7 +278,6 @@
                 document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]')
                     .value;
             }
-
             showStep(step);
         }
 

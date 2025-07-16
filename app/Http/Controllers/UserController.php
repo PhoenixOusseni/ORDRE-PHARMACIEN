@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,7 +14,9 @@ class UserController extends Controller
      */
     public function membre_actif()
     {
-        $collection = User::where('statut', '=', 'Actif') ->orderBy('created_at', 'desc')->get();
+        $user = Auth::user();
+        $collection = User::where('statut', '=', 'Actif')
+            ->where('region_ordinal_id', '=', $user->id)->orderBy('created_at', 'desc')->get();
 
         return view('admin.pages.membres.actifs', compact('collection'));
     }
@@ -23,25 +26,11 @@ class UserController extends Controller
      */
     public function membre_inactif()
     {
-        $collection = User::where('statut', '=', 'En cours') ->orderBy('created_at', 'desc')->get();
+        $user = Auth::user();
+        $collection = User::where('statut', '=', 'En cours')
+            ->where('region_ordinal_id', '=', $user->id)->orderBy('created_at', 'desc')->get();
 
         return view('admin.pages.membres.inactifs', compact('collection'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -51,22 +40,6 @@ class UserController extends Controller
     {
         $finds = User::findOrFail($id);
         return view('admin.pages.membres.show', compact('finds'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**
@@ -123,6 +96,7 @@ class UserController extends Controller
         $finds = User::find($id);
         $finds->update([
             'role_id' => $request->role_id,
+            'region_ordinal_id' => $request->region_ordinal_id
         ]);
 
         return redirect()->back()->with('success', 'Rôle utilisateur mis à jour avec succès.');

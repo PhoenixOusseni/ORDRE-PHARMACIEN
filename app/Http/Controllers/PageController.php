@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AutreDiplome;
 use App\Models\Cotisation;
+use App\Models\Fonction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +45,14 @@ class PageController extends Controller
     public function compte()
     {
         $finds = Auth::user();
-        return view('pages.users.profile', compact('finds'));
+        // Assuming you want to pass the authenticated user's data to the view
+        if (!$finds) {
+            return redirect()->route('authentification')->with('error', 'Vous devez être connecté pour accéder à cette page.');
+        }
+        // Return the view with the user's data
+        $autres_diplomes = AutreDiplome::where('user_id', $finds->id)->get();
+        $fonctions = Fonction::where('user_id', $finds->id)->get();
+        return view('pages.users.profile', compact('finds', 'autres_diplomes', 'fonctions'));
     }
 
     public function cotisations()

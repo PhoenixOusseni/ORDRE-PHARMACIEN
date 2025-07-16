@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -61,6 +62,19 @@ class AuthController extends Controller
      */
     public function add_user(Request $request)
     {
+        // Calculer l'âge à partir de la date de naissance
+        $date_naiss = Carbon::parse($request->date_naiss);
+        $age = $date_naiss->diffInYears(Carbon::now());
+
+        if ($age < 25) {
+            return redirect()->back()->with('error', 'Vous devez avoir au moins 25 ans pour vous inscrire.');
+        }
+
+        // Vérifier que la date_diplome ne dépasse pas la date d'aujourd'hui
+        if (Carbon::parse($request->date_diplome)->gt(Carbon::today())) {
+            return redirect()->back()->with('error', 'La date d\'obtention du diplôme ne peut pas être postérieure à aujourd\'hui.');
+        }
+
         $user = new User();
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
@@ -86,8 +100,6 @@ class AuthController extends Controller
         $user->province_id = $request->province_id;
         $user->role_id = $request->role_id;
 
-        $user->autre_diplome_id = $request->autre_diplome_id;
-        $user->fonction_id = $request->fonction_id;
         $user->responsabilite = $request->responsabilite;
         $user->montant_cotisation = $request->montant_cotisation;
 
@@ -114,7 +126,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Inscription réussie. Veuillez patientez pour l\'activation de votre compte');
+        return redirect()->back()->with('success', 'Inscription réussie. Veuillez patientez pour l\'activation de votre compte, Votre mot de passe est 12345678');
     }
 
     public function update(Request $request, $id)
@@ -143,7 +155,6 @@ class AuthController extends Controller
         $user->section_id = $request->section_id;
         $user->province_id = $request->province_id;
 
-        $user->autre_diplome_id = $request->autre_diplome_id;
         $user->fonction_id = $request->fonction_id;
         $user->responsabilite = $request->responsabilite;
         $user->montant_cotisation = $request->montant_cotisation;

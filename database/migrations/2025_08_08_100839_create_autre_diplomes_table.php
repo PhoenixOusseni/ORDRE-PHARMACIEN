@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nature')->nullable();
             $table->date('date_diplome')->nullable();
+
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

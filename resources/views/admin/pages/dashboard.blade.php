@@ -6,7 +6,7 @@
     <div class="container-xl px-4 mt-n10">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-4">
-                <div class="card bg-primary text-white h-100">
+                <div class="card bg-warning text-white h-100">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">

@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->belongsTo(Commune::class, 'commune_id');
     }
 
+    function Responsabilite() {
+        return $this->belongsTo(Responsabilite::class, 'responsabilite_id');
+    }
+
     function Cotisation() {
         return $this->hasMany(Cotisation::class);
     }
@@ -47,7 +51,6 @@ class User extends Authenticatable
     function Fonction() {
         return $this->hasMany(Fonction::class);
     }
-
 
 
     /**

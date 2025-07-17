@@ -89,12 +89,8 @@
                     <div class="step-circle">3</div>
                     <small class="step-label">Diplôme</small>
                 </div>
-                <div class="step-item flex-fill" id="step-nav-4">
-                    <div class="step-circle">4</div>
-                    <small class="step-label">Régional</small>
-                </div>
                 <div class="step-item flex-fill" id="step-nav-5">
-                    <div class="step-circle">5</div>
+                    <div class="step-circle">4</div>
                     <small class="step-label">Résumé</small>
                 </div>
             </div>
@@ -104,7 +100,7 @@
                 <div class="progress" style="height: 20px;">
                     <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 25%;"
                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                        Étape 1 / 5
+                        Étape 1 / 4
                     </div>
                 </div>
             </div>
@@ -117,14 +113,48 @@
                 <div id="step-1" class="step active">
                     <input type="text" class="form-control" name="role_id" value="1" hidden>
                     <input type="text" class="form-control" name="statut" value="En cours" hidden>
-                    <div class="row p-2 mb-3" style="background: #d4d9dd">
+                    <div class="row p-2 mb-3" style="background: #eceef1; border-radius: 5px;">
                         <div class="col-md-6 mb-3">
                             <label>Région ordinale<span class="text-danger">*</span></label>
                             <select name="region_ordinal_id" class="form-select">
+                                <option>Selectionner ici...</option>
                                 @foreach (App\Models\RegionOrdinal::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Région<span class="text-danger">*</span></label>
+                            <select name="region_id" class="form-select">
+                                <option>Selectionner ici...</option>
+                                @foreach (App\Models\Region::all() as $item)
+                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Province<span class="text-danger">*</span></label>
+                            <select name="province_id" class="form-select">
+                                <option>Selectionner ici...</option>
+                                @foreach (App\Models\Province::all() as $item)
+                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Ville<span class="text-danger">*</span></label>
+                            <select name="commune_id" class="form-select">
+                                <option>Selectionner ici...</option>
+                                @foreach (App\Models\Commune::all() as $item)
+                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row p-2 mb-3" style="background: #f5f4f1; border-radius: 5px;">
+                        <div class="col-md-6">
+                            <label>Definir un mot de passe<span class="text-danger">*</span></label>
+                            <input type="password" name="password" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -277,8 +307,7 @@
                             </p>
                             <p class="text-danger text-italic">
                                 <strong>Note :</strong> <em>Les pièces jointes doivent être au format PDF et ne pas dépasser
-                                    5
-                                    Mo.</em>
+                                    5 Mo.</em>
                             </p>
                         </div>
                     </div>
@@ -288,44 +317,8 @@
                     </div>
                 </div>
 
-                <!-- Étape 3 -->
-                <div id="step-4" class="step">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>Région</label>
-                            <select name="region_id" class="form-select">
-                                @foreach (App\Models\Region::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>Province</label>
-                            <select name="province_id" class="form-select">
-                                @foreach (App\Models\Province::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Commune</label>
-                            <select name="commune_id" class="form-select">
-                                @foreach (App\Models\Commune::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Précédent</button>
-                        <button type="button" class="btn btn-success" onclick="nextStep(5)">Suivant</button>
-                    </div>
-                </div>
-
                 <!-- Étape 4 -->
-                <div id="step-5" class="step">
+                <div id="step-4" class="step">
                     <h5 class="mb-4 text-success">Récapitulatif</h5>
                     <div class="row">
                         <div class="col-md-6">
@@ -341,7 +334,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Precedant</button>
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Precedant</button>
                         <button type="submit" class="btn btn-success">Valider l'inscription</button>
                     </div>
                 </div>
@@ -401,7 +394,7 @@
 
     <script>
         function updateStepNav(step) {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 4; i++) {
                 const el = document.getElementById('step-nav-' + i);
                 if (el) {
                     el.classList.toggle('active', i === step);
@@ -411,8 +404,8 @@
 
         function updateProgressBar(step) {
             const bar = document.getElementById('progress-bar');
-            const labels = ['Étape 1 / 5', 'Étape 2 / 5', 'Étape 3 / 5', 'Étape 4 / 5', 'Étape 5 / 5'];
-            const widths = ['25%', '25%', '50%', '100%'];
+            const labels = ['Étape 1 / 4', 'Étape 2 / 4', 'Étape 3 / 4', 'Étape 4 / 4'];
+            const widths = ['15%', '40%', '65%', '100%'];
             bar.style.width = widths[step - 1];
             bar.innerText = labels[step - 1];
         }
@@ -439,7 +432,7 @@
             });
             if (!valid) return;
 
-            if (step === 5) {
+            if (step === 4) {
                 document.getElementById('recap-nom').innerText = document.querySelector('[name="nom"]').value;
                 document.getElementById('recap-prenom').innerText = document.querySelector('[name="prenom"]').value;
                 document.getElementById('recap-telephone').innerText = document.querySelector('[name="telephone"]').value;

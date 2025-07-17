@@ -107,7 +107,7 @@ class AuthController extends Controller
         $user->inst_delivre = $request->inst_delivre;
         $user->lieu_delivrance = $request->lieu_delivrance;
 
-        $user->password = Hash::make('12345678'); // Mot de passe par défaut, à changer après la première connexion
+        $user->password = Hash::make($request->password); // Mot de passe par défaut, à changer après la première connexion
 
         if ($request->hasFile('file')) {
             $path = $request->file('file')->store('pieces_jointes', 'public');

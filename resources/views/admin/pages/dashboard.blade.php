@@ -22,7 +22,6 @@
                     </div>
                 </div>
             </div>
-            {{-- @if (Auth::user()->role !== 'Recouvrement') --}}
             <div class="col-lg-6 col-md-12 mb-4">
                 <div class="card bg-danger text-white h-100">
                     <div class="card-body">
@@ -40,7 +39,6 @@
                     </div>
                 </div>
             </div>
-            {{-- @endif --}}
         </div>
         <!-- Example Charts for Dashboard Demo-->
         <div class="row">

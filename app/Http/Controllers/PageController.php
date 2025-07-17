@@ -81,14 +81,26 @@ class PageController extends Controller
 
     public function admin()
     {
+        $user = Auth::user();
+
         // Assuming you want to pass some data to the dashboard view
         $current_date = date('Y/m/d');
-        $actifs = User::where('statut', 'Actif')->get(); //
-        $inactifs = User::where('statut', 'En cours')->get();
-        $cotisations = Cotisation::where('date', '=', $current_date)->get();
-        $total = $cotisations->sum('montant');
 
-        return view('admin.pages.dashboard', compact('actifs', 'inactifs', 'cotisations', 'total'));
+        if ($user->role_id == 3) {
+            $actifs = User::where('statut', 'Actif')->where('role_id', '!=', 3)->get();
+            $inactifs = User::where('statut', 'En cours')->where('role_id', '!=', 3)->get();
+            $cotisations = Cotisation::where('date', '=', $current_date)->get();
+            $total = $cotisations->sum('montant');
+
+            return view('admin.pages.dashboard', compact('actifs', 'inactifs', 'cotisations', 'total'));
+        } else {
+            $actifs = User::where('statut', 'Actif')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->get();
+            $inactifs = User::where('statut', 'En cours')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->get();
+            $cotisations = Cotisation::where('date', '=', $current_date)->get();
+            $total = $cotisations->sum('montant');
+
+            return view('admin.pages.dashboard', compact('actifs', 'inactifs', 'cotisations', 'total'));
+        }
     }
 
     public function errors()

@@ -123,7 +123,7 @@
     <!-- Modal activation -->
     <div class="modal fade" id="activationBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-default">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Action du compte</h5>
@@ -134,7 +134,7 @@
                         <form method="POST" action="{{ url('membre_activation/' . $finds->id) }}">
                             @csrf
                             <div class="col-lg-12 col-md-12 text-center">
-                                <img src="{{ asset('assets/img/avertissement.jpg') }}" alt="warning" width="25%">
+                                <img src="{{ asset('assets/img/avertissement.jpg') }}" alt="warning" width="15%">
                             </div>
                             <div class="col-lg-12 col-md-12 text-center">
                                 <h5 class="text-danger">Voulez-vous vraiment activer le compte de
@@ -142,6 +142,20 @@
                                 </h5>
                             </div>
                             <hr>
+                            <div class="row">
+                                <input type="text" name="montant_cotisation" hidden>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="mb-3">
+                                        <label>Categorie du membre<span class="text-danger">*</span></label>
+                                        <select class="form-select" name="responsabilite_id" required>
+                                            <option>Selectionner ici...</option>
+                                            @foreach (App\Models\Responsabilite::all() as $item)
+                                                <option value="{{ $item->id }}">{{ $item->libelle }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-success">Activer</button>
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
@@ -209,7 +223,8 @@
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="mb-3">
                                                         <label>Somme<span class="text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="montant" />
+                                                        <input type="number" class="form-control" name="montant" value="{{ $finds->montant_cotisation }}"
+                                                            readonly />
                                                     </div>
                                                 </div>
                                             </div>

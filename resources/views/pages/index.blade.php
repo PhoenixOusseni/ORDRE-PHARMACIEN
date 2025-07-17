@@ -3,12 +3,11 @@
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
-        <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+        <img src="assets/img/bd-gestionmenbre.jpg" alt="caroussel" data-aos="fade-in">
         <div class="container position-relative">
             <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
-                <h2>BIENVENUE DANS MUTUEL DES PHARMACIENS</h2>
-                <p class="text-bg-secondary text-center">Votre mutuelle santé dédiée aux pharmaciens, alliant protection,
-                    solidarité et engagement professionnel</p>
+                <h2 class="text-center text-light">ORDRE NATIONAL DES PHARMACIENS DU BURKINA FASO (ONPBF)</h2>
+                <p class="text-bg-secondary text-center">Plateforme de gestion des procédure administratives et des membres</p>
             </div>
             <div class="d-flex justify-content-between mt-5">
                 <button type="button" class="btn btn-success p-3"
@@ -38,11 +37,13 @@
                     <p>
                         <strong>1.</strong> Un extrait d'acte de naissance <br>
                         <strong>2.</strong> un extrait d'un casier judiciaire datant de moins de trois mois <br>
-                        <strong>3.</strong> Une copie légalisée du diplôme de pharmacien ou l'attestation de diplôme de docteur en pharmacie <br>
+                        <strong>3.</strong> Une copie légalisée du diplôme de pharmacien ou l'attestation de diplôme de
+                        docteur en pharmacie <br>
                         <strong>4.</strong> Un certificat de nationalité <br>
                         <strong>5.</strong> Un certificat d'aptitude médical
                     <p class="text-danger font-italic mt-3">
-                        <em><strong class="text-danger">NB: </strong> Pour les pharmaciens de nationalités étrangères, il faudra ajouter l'attestation de radiation et la lettre d'introduction de l'Ordre d'origine </em>
+                        <em><strong class="text-danger">NB: </strong> Pour les pharmaciens de nationalités étrangères, il
+                            faudra ajouter l'attestation de radiation et la lettre d'introduction de l'Ordre d'origine </em>
                     </p>
                 </div>
             </div>

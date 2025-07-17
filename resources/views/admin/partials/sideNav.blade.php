@@ -18,10 +18,7 @@
                         <nav class="sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ route('membre_actif') }}">Membre actifs</a>
                             {{-- @if (Auth::user()->role == 'Privilege' || Auth::user()->role == 'Secretaire' || Auth::user()->role == 'Caisse') --}}
-                                <a class="nav-link" href="{{ route('membre_inactif') }}">Membre en attents</a>
-                            {{-- @endif --}}
-                            {{-- @if (Auth::user()->role == 'Privilege' || Auth::user()->role == 'Secretaire') --}}
-                                <a class="nav-link" href="">Ajouter membre</a>
+                            <a class="nav-link" href="{{ route('membre_inactif') }}">Membre en attents</a>
                             {{-- @endif --}}
                         </nav>
                     </div>
@@ -34,7 +31,7 @@
                     <div class="collapse" id="pagesCollapseError2" data-bs-parent="#accordionSidenavPagesMenu">
                         <nav class="sidenav-menu-nested nav">
                             {{-- @if (Auth::user()->role == 'Privilege' || Auth::user()->role == 'Secretaire' || Auth::user()->role == 'Administration' || Auth::user()->role == 'Caisse') --}}
-                                <a class="nav-link" href="{{ route('gestion_cotisations.index') }}">Liste cotisation</a>
+                            <a class="nav-link" href="{{ route('gestion_cotisations.index') }}">Liste cotisation</a>
                             {{-- @endif --}}
                             <a class="nav-link" href="{{ route('gestion_cotisations.create') }}">Ajouter cotisation</a>
                         </nav>
@@ -53,12 +50,16 @@
                                     <div class="nav-link-icon"><i data-feather="users"></i></div>
                                     Gestion des comptes
                                 </a>
+                                <a class="nav-link collapsed" href="{{ route('gestion_compte') }}">
+                                    <div class="nav-link-icon"><i data-feather="users"></i></div>
+                                    Ajouter membre
+                                </a>
                             </nav>
                         </div>
                     @endif
                 </div>
             </div>
-            <img class="text-center" src="{{asset('assets/img/logo_banner.png')}}" alt="logo" width="100%"
+            <img class="text-center" src="{{ asset('assets/img/22_a9ad743c.jpg') }}" alt="logo" width="100%"
                 style="margin: auto">
             <!-- Sidenav Footer-->
             <div class="sidenav-footer">

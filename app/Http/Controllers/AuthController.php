@@ -89,7 +89,6 @@ class AuthController extends Controller
         $user->situation_matrimoniale = $request->situation_matrimoniale;
         $user->adresse = $request->adresse;
         $user->domicile = $request->domicile;
-        $user->num_rccm = $request->num_rccm;
         $user->lieu_exercice = $request->lieu_exercice;
         $user->statut = $request->statut;
 
@@ -99,9 +98,6 @@ class AuthController extends Controller
         $user->section_id = $request->section_id;
         $user->province_id = $request->province_id;
         $user->role_id = $request->role_id;
-
-        $user->responsabilite = $request->responsabilite;
-        $user->montant_cotisation = $request->montant_cotisation;
 
         $user->date_diplome = $request->date_diplome;
         $user->inst_delivre = $request->inst_delivre;

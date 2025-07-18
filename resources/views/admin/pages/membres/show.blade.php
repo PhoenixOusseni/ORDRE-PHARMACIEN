@@ -101,6 +101,61 @@
                     </div>
                 </div>
 
+                <!-- 🎓 SECTION 3 : Autre Diplômes et fonction -->
+                <div class="mb-4">
+                    <h5 class="text-success border-bottom pb-2 mb-3">🎓 Autres diplome et Fonction</h5>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <h4 class="text-center">Autres diplomes</h4>
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date d'obtention</th>
+                                        <th>Nature diplôme</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($autres_diplomes as $item)
+                                        <tr>
+                                            <td>{{ $item->date_diplome }}</td>
+                                            <td>{{ $item->nature }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center text-danger"><em>Aucun autre diplôme
+                                                    enregistré</em></td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-center">Fonctions</h4>
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Libelle fonction</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($fonctions as $item)
+                                        <tr>
+                                            <td>{{ $item->date }}</td>
+                                            <td>{{ $item->libelle }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center text-danger"><em>Aucun fonction
+                                                    enregistré</em></td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-start gap-2 mt-4">
                     @if ($finds->statut == 'En cours' && (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3))
                         <button class="btn btn-outline-success" data-bs-toggle="modal"

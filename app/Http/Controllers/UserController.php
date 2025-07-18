@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Fonction;
+use App\Models\AutreDiplome;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -16,7 +18,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user->role_id == 3) {
-            $collection = User::where('statut', '=', 'Actif')->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
+            $collection = User::where('statut', '=', 'Actif')->where('role_id', '!=', 3)->where('role_id', '!=', 4)->orderBy('created_at', 'desc')->get();
             return view('admin.pages.membres.actifs', compact('collection'));
         } else {
             $collection = User::where('statut', '=', 'Actif')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
@@ -31,7 +33,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user->role_id == 3) {
-            $collection = User::where('statut', '=', 'En cours')->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
+            $collection = User::where('statut', '=', 'En cours')->where('role_id', '!=', 3)->where('role_id', '!=', 4)->orderBy('created_at', 'desc')->get();
             return view('admin.pages.membres.inactifs', compact('collection'));
         } else {
             $collection = User::where('statut', '=', 'En cours')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
@@ -45,7 +47,10 @@ class UserController extends Controller
     public function show(string $id)
     {
         $finds = User::findOrFail($id);
-        return view('admin.pages.membres.show', compact('finds'));
+        // Return the view with the user's data
+        $autres_diplomes = AutreDiplome::where('user_id', $finds->id)->get();
+        $fonctions = Fonction::where('user_id', $finds->id)->get();
+        return view('admin.pages.membres.show', compact('finds', 'autres_diplomes', 'fonctions'));
     }
 
     /**
@@ -74,10 +79,26 @@ class UserController extends Controller
             $request->merge(['montant_cotisation' => 30000]);
         }
 
+        // récupérer la RegionOrdinal (R1, R2, etc)
+            $regionCode = $finds->RegionOrdinal->code; // relation belongsTo
+
+            // récupérer la Section (A, B, etc)
+            $sectionCode = $finds->Section->code; // relation belongsTo
+
+            // compter combien d'utilisateurs sont déjà dans cette region
+            $count = User::where('region_ordinal_id', $finds->region_ordinal_id)->count();
+
+            // numéro incrémental formaté
+            $number = str_pad($count, 4, '0', STR_PAD_LEFT);
+
+            // construire le code
+            $code = "{$regionCode}-{$number}{$sectionCode}";
+
         $finds->update([
             'statut' => 'Actif',
             'responsabilite_id' => $request->responsabilite_id,
             'montant_cotisation' => $request->montant_cotisation,
+            'code' => $code,
         ]);
         return redirect()->route('membre_actif')->with('success', 'Compte activé avec succès.');
     }

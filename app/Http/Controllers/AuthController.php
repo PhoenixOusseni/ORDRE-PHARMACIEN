@@ -121,7 +121,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Inscription réussie. Veuillez patientez pour l\'activation de votre compte, Votre mot de passe est 12345678');
+        return redirect()->back()->with('success', 'Inscription réussie. Veuillez patientez pour l\'activation de votre compte');
     }
 
     public function update(Request $request, $id)

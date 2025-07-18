@@ -131,7 +131,7 @@
                     <div class="row p-2 mb-3" style="background: #eceef1; border-radius: 5px;">
                         <div class="col-md-6 mb-3">
                             <label>Région ordinale<span class="text-danger">*</span></label>
-                            <select name="region_ordinal_id" class="form-select">
+                            <select name="region_ordinal_id" class="form-select" required>
                                 <option>Selectionner ici...</option>
                                 @foreach (App\Models\RegionOrdinal::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Région<span class="text-danger">*</span></label>
-                            <select name="region_id" class="form-select">
+                            <select name="region_id" class="form-select" required>
                                 <option>Selectionner ici...</option>
                                 @foreach (App\Models\Region::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Province<span class="text-danger">*</span></label>
-                            <select name="province_id" class="form-select">
+                            <select name="province_id" class="form-select" required>
                                 <option>Selectionner ici...</option>
                                 @foreach (App\Models\Province::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Ville<span class="text-danger">*</span></label>
-                            <select name="commune_id" class="form-select">
+                            <select name="commune_id" class="form-select" required>
                                 <option>Selectionner ici...</option>
                                 @foreach (App\Models\Commune::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
@@ -243,20 +243,15 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Email<span class="text-danger">*</span></label>
-                            <input type="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="col-md-6">
                             <label>Télephone<span class="text-danger">*</span></label>
                             <input type="text" name="telephone" class="form-control" required>
                         </div>
-                    </div>
-                    <div class="row mb-3">
                         <div class="col-md-6">
                             <label>N° Matricule<span class="text-danger"><em> (Pour les fonctionnaires)
                                     </em></span></label>
                             <input type="text" name="matricule" class="form-control">
                         </div>
+
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Précédent</button>

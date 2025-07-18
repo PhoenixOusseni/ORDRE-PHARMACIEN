@@ -57,6 +57,7 @@
                                     <th>Période</th>
                                     <th>Mode paiement</th>
                                     <th>Montant</th>
+                                    <th>Période</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

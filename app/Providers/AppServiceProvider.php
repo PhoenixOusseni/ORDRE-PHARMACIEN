@@ -31,25 +31,25 @@ class AppServiceProvider extends ServiceProvider
         // Set the default locale for translations
         App::setLocale(config('app.locale', 'fr'));
 
-        User::created(function (User $user) {
-            // récupérer la RegionOrdinal (R1, R2, etc)
-            $regionCode = $user->RegionOrdinal->code; // relation belongsTo
+        // User::created(function (User $user) {
+        //     // récupérer la RegionOrdinal (R1, R2, etc)
+        //     $regionCode = $user->RegionOrdinal->code; // relation belongsTo
 
-            // récupérer la Section (A, B, etc)
-            $sectionCode = $user->Section->code; // relation belongsTo
+        //     // récupérer la Section (A, B, etc)
+        //     $sectionCode = $user->Section->code; // relation belongsTo
 
-            // compter combien d'utilisateurs sont déjà dans cette region
-            $count = User::where('region_ordinal_id', $user->region_ordinal_id)->count();
+        //     // compter combien d'utilisateurs sont déjà dans cette region
+        //     $count = User::where('region_ordinal_id', $user->region_ordinal_id)->count();
 
-            // numéro incrémental formaté
-            $number = str_pad($count, 4, '0', STR_PAD_LEFT);
+        //     // numéro incrémental formaté
+        //     $number = str_pad($count, 4, '0', STR_PAD_LEFT);
 
-            // construire le code
-            $code = "{$regionCode}-{$number}{$sectionCode}";
+        //     // construire le code
+        //     $code = "{$regionCode}-{$number}{$sectionCode}";
 
-            // mettre à jour le code du user
-            $user->update(['code' => $code]);
-        });
+        //     // mettre à jour le code du user
+        //     $user->update(['code' => $code]);
+        // });
 
         Cotisation::created(function (Cotisation $cotisation) {
             // Compter combien d'utilisateurs ont déjà été créés

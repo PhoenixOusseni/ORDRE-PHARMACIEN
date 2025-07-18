@@ -114,6 +114,20 @@
                 <div id="step-1" class="step active">
                     <input type="text" class="form-control" name="role_id" value="1" hidden>
                     <input type="text" class="form-control" name="statut" value="En cours" hidden>
+                    <div class="row p-2 mb-3" style="background: #f7f4ec; border-radius: 5px;">
+                        <div class="col-md-6">
+                            <label>Email<span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Mot de passe<span class="text-danger">*</span></label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Confirmer mot de passe<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                    </div>
                     <div class="row p-2 mb-3" style="background: #eceef1; border-radius: 5px;">
                         <div class="col-md-6 mb-3">
                             <label>Région ordinale<span class="text-danger">*</span></label>
@@ -150,12 +164,6 @@
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
                             </select>
-                        </div>
-                    </div>
-                    <div class="row p-2 mb-3" style="background: #f5f4f1; border-radius: 5px;">
-                        <div class="col-md-6">
-                            <label>Definir un mot de passe<span class="text-danger">*</span></label>
-                            <input type="password" name="password" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -249,10 +257,6 @@
                                     </em></span></label>
                             <input type="text" name="matricule" class="form-control">
                         </div>
-                        <div class="col-md-6">
-                            <label>Lieu d'exercice<span class="text-danger">*</span></label>
-                            <input type="text" name="lieu_exercice" class="form-control" required>
-                        </div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Précédent</button>
@@ -334,6 +338,24 @@
                             <p><strong>Email:</strong> <span id="recap-email"></span></p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Adresse:</strong> <span id="recap-adresse"></span></p>
+                            <p><strong>Domicile:</strong> <span id="recap-domicile"></span></p>
+                            <p><strong>Section:</strong> <span id="recap-section_id"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Région ordinale:</strong> <span id="recap-region_ordinal_id"></span></p>
+                            <p><strong>Région:</strong> <span id="recap-region_id"></span></p>
+                            <p><strong>Province:</strong> <span id="recap-province_id"></span></p>
+                            <p><strong>Commune:</strong> <span id="recap-commune_id"></span></p>
+                        </div>
+                    </div>
+                    <p class="text-danger"><em>Veuillez vérifier les informations ci-dessus avant de soumettre votre
+                            inscription.</em></p>
+                    <p class="text-success"><strong>Note :</strong> <em>Votre inscription sera examinée par
+                            l'administration
+                            et vous recevrez une notification par email une fois votre compte activé.</em></p>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Precedant</button>
                         <button type="submit" class="btn btn-success">Valider l'inscription</button>
@@ -442,6 +464,18 @@
                 document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]')
                     .value;
                 document.getElementById('recap-email').innerText = document.querySelector('[name="email"]').value;
+                document.getElementById('recap-adresse').innerText = document.querySelector('[name="adresse"]').value;
+                document.getElementById('recap-domicile').innerText = document.querySelector('[name="domicile"]').value;
+                document.getElementById('recap-region_ordinal_id').innerText = document.querySelector(
+                    '[name="region_ordinal_id"] option:checked').textContent;
+                document.getElementById('recap-region_id').innerText = document.querySelector(
+                    '[name="region_id"] option:checked').textContent;
+                document.getElementById('recap-province_id').innerText = document.querySelector(
+                    '[name="province_id"] option:checked').textContent;
+                document.getElementById('recap-commune_id').innerText = document.querySelector(
+                    '[name="commune_id"] option:checked').textContent;
+                document.getElementById('recap-section_id').innerText = document.querySelector(
+                    '[name="section_id"] option:checked').textContent;
                 // Ajouter d'autres champs récapitulatifs si nécessaire
             }
 

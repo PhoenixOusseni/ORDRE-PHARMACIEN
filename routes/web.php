@@ -25,6 +25,7 @@ Route::post('membre_activation/{id}', [UserController::class, 'activate'])->name
 Route::post('add_profil_image/{id}', [UserController::class, 'profil_image']);
 Route::post('update_profil/{id}', [AuthController::class, 'update']);
 Route::get('gestion_compte', [UserController::class, 'gest_account'])->name('gestion_compte');
+Route::get('gestion_administrateur', [UserController::class, 'gest_admin'])->name('gest_admin');
 Route::post('change_user_role/{id}', [UserController::class, 'change_role']);
 
 Route::resource('gestion_cotisations', CotisationController::class);

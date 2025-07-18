@@ -89,7 +89,6 @@ class AuthController extends Controller
         $user->situation_matrimoniale = $request->situation_matrimoniale;
         $user->adresse = $request->adresse;
         $user->domicile = $request->domicile;
-        $user->lieu_exercice = $request->lieu_exercice;
         $user->statut = $request->statut;
 
         $user->region_ordinal_id = $request->region_ordinal_id;

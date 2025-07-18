@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
-                            GESTION DES COMPTES DES MEMBRES
+                            Ajouter un administrateur
                         </h1>
                         <div class="page-header-subtitle">Liste des membres actifs</div>
                     </div>

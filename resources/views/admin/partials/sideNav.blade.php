@@ -54,9 +54,9 @@
                                     <div class="nav-link-icon"><i data-feather="users"></i></div>
                                     Gestion des comptes
                                 </a>
-                                <a class="nav-link collapsed" href="{{ route('gestion_compte') }}">
+                                <a class="nav-link collapsed" href="{{ route('gest_admin') }}">
                                     <div class="nav-link-icon"><i data-feather="users"></i></div>
-                                    Ajouter membre
+                                    Ajouter administrateur
                                 </a>
                             </nav>
                         </div>

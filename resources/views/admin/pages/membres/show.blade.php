@@ -97,8 +97,7 @@
                             {{ $finds->date_diplome }}
                         </div>
                         <div class="col-md-6"><strong>Institution :</strong> {{ $finds->inst_delivre }}</div>
-                        <div class="col-md-6"><strong>Lieu de délivrance :</strong> {{ $finds->lieu_delivrance }}
-                        </div>
+                        <div class="col-md-6"><strong>Lieu de délivrance :</strong> {{ $finds->lieu_delivrance }}</div>
                     </div>
                 </div>
 

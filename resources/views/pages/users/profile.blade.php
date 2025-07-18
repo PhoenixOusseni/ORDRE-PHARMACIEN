@@ -120,15 +120,15 @@
                             <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Nature diplôme</th>
                                         <th>Date d'obtention</th>
+                                        <th>Nature diplôme</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($autres_diplomes as $item)
                                         <tr>
-                                            <td>{{ $item->nature }}</td>
                                             <td>{{ $item->date_diplome }}</td>
+                                            <td>{{ $item->nature }}</td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -146,15 +146,15 @@
                             <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Libelle fonction</th>
                                         <th>Date</th>
+                                        <th>Libelle fonction</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($fonctions as $item)
                                         <tr>
-                                            <td>{{ $item->libelle }}</td>
                                             <td>{{ $item->date }}</td>
+                                            <td>{{ $item->libelle }}</td>
                                         </tr>
                                     @empty
                                         <tr>

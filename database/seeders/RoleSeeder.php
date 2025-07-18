@@ -23,6 +23,9 @@ class RoleSeeder extends Seeder
             [
                 'libelle' => 'Super Admin',
             ],
+            [
+                'libelle' => 'Secretaire',
+            ],
         ]);
     }
 }

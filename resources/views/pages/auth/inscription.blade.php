@@ -68,7 +68,8 @@
 
             @if (session('error'))
                 <div class="alert alert-danger">
-                    <span><img src="{{ asset('assets/img/close.svg') }}" alt=""></span><span style="color: rgb(242, 96, 96)">Echec !</span>
+                    <span><img src="{{ asset('assets/img/close.svg') }}" alt=""></span><span
+                        style="color: rgb(242, 96, 96)">Echec !</span>
                     {{ session('error') }}
                 </div>
             @endif
@@ -438,7 +439,8 @@
                 document.getElementById('recap-telephone').innerText = document.querySelector('[name="telephone"]').value;
                 document.getElementById('recap-date_naiss').innerText = document.querySelector('[name="date_naiss"]').value;
                 document.getElementById('recap-lieu_naiss').innerText = document.querySelector('[name="lieu_naiss"]').value;
-                document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]').value;
+                document.getElementById('recap-nationalite').innerText = document.querySelector('[name="nationalite"]')
+                    .value;
                 document.getElementById('recap-email').innerText = document.querySelector('[name="email"]').value;
                 // Ajouter d'autres champs récapitulatifs si nécessaire
             }
@@ -451,4 +453,30 @@
         }
         document.addEventListener('DOMContentLoaded', () => showStep(1));
     </script>
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const regionOrdinaleSelect = document.querySelector('select[name="region_ordinal_id"]');
+            const regionSelect = document.querySelector('select[name="region_id"]');
+
+            regionOrdinaleSelect.addEventListener('change', function() {
+                const selectedId = this.value;
+
+                // Nettoyer le champ Region
+                regionSelect.innerHTML = '<option value="">Chargement...</option>';
+
+                fetch(`/regions/${selectedId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        regionSelect.innerHTML = '<option value=""></option>';
+                        data.forEach(region => {
+                            const option = document.createElement('option');
+                            option.value = region.id;
+                            option.textContent = region.libelle;
+                            regionSelect.appendChild(option);
+                        });
+                    });
+            });
+        });
+    </script> --}}
 @endsection

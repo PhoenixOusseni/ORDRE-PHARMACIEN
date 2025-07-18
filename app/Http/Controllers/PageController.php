@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\AutreDiplome;
-use App\Models\Cotisation;
-use App\Models\Fonction;
 use App\Models\User;
+use App\Models\Region;
+use App\Models\Fonction;
+use App\Models\Cotisation;
+use App\Models\AutreDiplome;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -39,6 +40,7 @@ class PageController extends Controller
      */
     public function inscription()
     {
+
         return view('pages.auth.inscription');
     }
 
@@ -106,5 +108,11 @@ class PageController extends Controller
     public function errors()
     {
         return view('pages.errors_404');
+    }
+
+    public function getByRegionOrdinale($regionOrdinaleId)
+    {
+        $regions = Region::where('region_ordinal_id', $regionOrdinaleId)->get();
+        return response()->json($regions);
     }
 }

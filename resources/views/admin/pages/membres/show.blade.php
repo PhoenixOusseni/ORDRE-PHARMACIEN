@@ -103,15 +103,19 @@
                 </div>
 
                 <div class="d-flex justify-content-start gap-2 mt-4">
-                    @if ($finds->statut == 'En cours')
+                    @if ($finds->statut == 'En cours' && (Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3))
                         <button class="btn btn-outline-success" data-bs-toggle="modal"
                             data-bs-target="#activationBackdrop">Activer le compte</button>
                     @endif
-                    @if ($finds->statut == 'Actif')
-                        <a href="#!" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#cotisationBackdrop">
-                            💰 Faire une cotisations
-                        </a>
+                    @if (Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
+                        @if ($finds->statut == 'Actif')
+                            <a href="#!" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#cotisationBackdrop">
+                                💰 Faire une cotisations
+                            </a>
+                        @endif
+                    @endif
+                    @if (Auth()->user()->role_id == 3)
                         <a href="" class="btn btn-danger">❌ Désactiver le compte</a>
                     @endif
                 </div>
@@ -223,8 +227,8 @@
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="mb-3">
                                                         <label>Somme<span class="text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="montant" value="{{ $finds->montant_cotisation }}"
-                                                            readonly />
+                                                        <input type="number" class="form-control" name="montant"
+                                                            value="{{ $finds->montant_cotisation }}" readonly />
                                                     </div>
                                                 </div>
                                             </div>

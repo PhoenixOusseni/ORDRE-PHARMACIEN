@@ -22,20 +22,24 @@
                             {{-- @endif --}}
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                        data-bs-target="#pagesCollapseError2" aria-expanded="false" aria-controls="pagesCollapseError">
-                        <div class="nav-link-icon"><i data-feather="package"></i></div>
-                        COTISATION
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="pagesCollapseError2" data-bs-parent="#accordionSidenavPagesMenu">
-                        <nav class="sidenav-menu-nested nav">
-                            {{-- @if (Auth::user()->role == 'Privilege' || Auth::user()->role == 'Secretaire' || Auth::user()->role == 'Administration' || Auth::user()->role == 'Caisse') --}}
-                            <a class="nav-link" href="{{ route('gestion_cotisations.index') }}">Liste cotisation</a>
-                            {{-- @endif --}}
-                            <a class="nav-link" href="{{ route('gestion_cotisations.create') }}">Ajouter cotisation</a>
-                        </nav>
-                    </div>
+                    @if (Auth::user()->Role->id == 3 || Auth::user()->Role->id == 4)
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                            data-bs-target="#pagesCollapseError2" aria-expanded="false"
+                            aria-controls="pagesCollapseError">
+                            <div class="nav-link-icon"><i data-feather="package"></i></div>
+                            COTISATION
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError2" data-bs-parent="#accordionSidenavPagesMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                {{-- @if (Auth::user()->role == 'Privilege' || Auth::user()->role == 'Secretaire' || Auth::user()->role == 'Administration' || Auth::user()->role == 'Caisse') --}}
+                                <a class="nav-link" href="{{ route('gestion_cotisations.index') }}">Liste cotisation</a>
+                                {{-- @endif --}}
+                                <a class="nav-link" href="{{ route('gestion_cotisations.create') }}">Ajouter
+                                    cotisation</a>
+                            </nav>
+                        </div>
+                    @endif
 
                     @if (Auth::user()->Role->id == 3)
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"

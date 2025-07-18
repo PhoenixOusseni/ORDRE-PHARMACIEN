@@ -23,7 +23,7 @@
             </a>
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    @if (Auth::user()->Role->id == 2 || Auth::user()->Role->id == 3)
+                    @if (Auth::user()->Role->id == 2 || Auth::user()->Role->id == 3 || Auth::user()->Role->id == 4)
                         <li><a href="{{ route('admin') }}" class="active">Administration<br></a></li>
                         <li><a href="{{ route('gestion_cotisations.index') }}">Cotisation</a></li>
                     @endif

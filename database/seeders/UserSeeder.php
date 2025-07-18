@@ -99,6 +99,18 @@ class UserSeeder extends Seeder
                 'email' => 's-admin@gmail.com',
                 'password' => Hash::make('password'),
             ],
+            [
+                'matricule' => '789012',
+                'nom' => 'SORO',
+                'prenom' => 'Fatou',
+                'telephone' => '456789123',
+                'role_id' => 4,
+                'section_id' => 3,
+                'statut' => 'Actif',
+                'region_ordinal_id' => 3,
+                'email' => 'secretaire@gmail.com',
+                'password' => Hash::make('password'),
+            ],
         ]);
     }
 }

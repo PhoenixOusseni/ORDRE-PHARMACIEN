@@ -31,14 +31,13 @@
             <!-- © Droits -->
             <div class="col-lg-4 col-md-12 text-lg-end text-center">
                 <p class="mb-1">
-                    &copy; {{ date('Y') }} <strong class="text-success">Mutuelle</strong>
+                    &copy; {{ date('Y') }} <strong class="text-success">Ordre pharmacien</strong>
                 </p>
                 <small class="d-block">
                     Produit par
-                    <a href="https://bootstrapmade.com/" target="_blank" class="text-decoration-none text-success">Moukeuteck</a>
+                    <a href="#" target="_blank" class="text-decoration-none text-success">Ordre pharmacien</a>
                 </small>
             </div>
-
         </div>
     </div>
 </footer>

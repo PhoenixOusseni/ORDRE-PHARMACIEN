@@ -30,9 +30,7 @@ return new class extends Migration
             $table->string('situation_matrimoniale')->nullable();
             $table->string('adresse')->nullable();
             $table->string('domicile')->nullable();
-            $table->string('num_rccm')->nullable();
             $table->string('lieu_exercice')->nullable();
-            $table->string('responsabilite')->nullable();
             $table->integer('montant_cotisation')->nullable();
 
             $table->string('statut')->nullable(); // actif, inactif, suspendu

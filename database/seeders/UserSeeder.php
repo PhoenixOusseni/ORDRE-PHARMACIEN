@@ -95,6 +95,7 @@ class UserSeeder extends Seeder
                 'role_id' => 3,
                 'section_id' => 3,
                 'statut' => 'Actif',
+                'region_ordinal_id' => 3,
                 'email' => 's-admin@gmail.com',
                 'password' => Hash::make('password'),
             ],

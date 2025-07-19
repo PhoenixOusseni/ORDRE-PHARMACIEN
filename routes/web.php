@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AutreDiplomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CotisationController;
+use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\FonctionController;
+use App\Http\Controllers\CotisationController;
+use App\Http\Controllers\AutreDiplomeController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -35,6 +36,8 @@ Route::get('impression/print_cotisation/{id}', [CotisationController::class, 'pr
 Route::resource('gestion_diplome', AutreDiplomeController::class);
 
 Route::resource('gestion_fonction', FonctionController::class);
+
+Route::resource('gestion_exercice', AnneeController::class);
 
 Route::post('add_user', [AuthController::class, 'add_user'])->name('register');
 Route::post('connexion', [AuthController::class, 'login'])->name('login');

@@ -58,6 +58,10 @@
                                     <div class="nav-link-icon"><i data-feather="users"></i></div>
                                     Ajouter administrateur
                                 </a>
+                                <a class="nav-link collapsed" href="{{ route('gestion_exercice.index') }}">
+                                    <div class="nav-link-icon"><i data-feather="file-text"></i></div>
+                                    Exercice de cotisation
+                                </a>
                             </nav>
                         </div>
                     @endif

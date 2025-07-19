@@ -13,4 +13,8 @@ class Cotisation extends Model
     function User() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    function Annee() {
+        return $this->belongsTo(Annee::class, 'annee_id');
+    }
 }

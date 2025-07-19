@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user->role_id == 3) {
-            $collection = User::where('statut', '=', 'Actif')->where('role_id', '!=', 3)->where('role_id', '!=', 4)->orderBy('created_at', 'desc')->get();
+            $collection = User::where('statut', '=', 'Actif')->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
             return view('admin.pages.membres.actifs', compact('collection'));
         } else {
             $collection = User::where('statut', '=', 'Actif')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user->role_id == 3) {
-            $collection = User::where('statut', '=', 'En cours')->where('role_id', '!=', 3)->where('role_id', '!=', 4)->orderBy('created_at', 'desc')->get();
+            $collection = User::where('statut', '=', 'En cours')->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();
             return view('admin.pages.membres.inactifs', compact('collection'));
         } else {
             $collection = User::where('statut', '=', 'En cours')->where('region_ordinal_id', '=', $user->region_ordinal_id)->where('role_id', '!=', 3)->orderBy('created_at', 'desc')->get();

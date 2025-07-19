@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('montant')->nullable();
             $table->string('mode')->nullable();
             $table->string('desc')->nullable();
-            $table->integer('annee')->nullable();
-
+            
+            $table->foreignId('annee_id')->nullable()->constrained('annees')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

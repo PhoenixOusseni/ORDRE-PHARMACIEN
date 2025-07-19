@@ -6,7 +6,7 @@
                     <div class="sidenav-menu-heading">Pages</div>
                     <a class="nav-link collapsed" href="{{ route('admin') }}">
                         <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                        Tableau de bord
+                        TABLEAU DE BORD
                     </a>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                         data-bs-target="#pagesCollapseError1" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -45,7 +45,7 @@
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                             data-bs-target="#collapsePages345" aria-expanded="false" aria-controls="collapsePages">
                             <div class="nav-link-icon"><i data-feather="users"></i></div>
-                            Administration
+                            ADMINISTRATION
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages345" data-bs-parent="#accordionSidenav">
@@ -60,7 +60,7 @@
                                 </a>
                                 <a class="nav-link collapsed" href="{{ route('gestion_exercice.index') }}">
                                     <div class="nav-link-icon"><i data-feather="file-text"></i></div>
-                                    Exercice de cotisation
+                                    Année budgetaire
                                 </a>
                             </nav>
                         </div>

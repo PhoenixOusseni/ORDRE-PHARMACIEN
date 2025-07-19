@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cotisation;
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Annee;
+use App\Models\Cotisation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CotisationController extends Controller
 {
@@ -52,8 +53,9 @@ class CotisationController extends Controller
     {
         // Retrieve all cotisations
         $users = User::where('statut', '=', 'Actif')->orderBy('nom', 'desc')->get();
+        $annees = Annee::where('statut', 'Actif')->get();
 
-        return view('admin.pages.cotisations.create', compact('users'));
+        return view('admin.pages.cotisations.create', compact('users', 'annees'));
     }
 
     /**

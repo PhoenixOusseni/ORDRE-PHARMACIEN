@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CommuneSeeder::class,
             ResponsabiliteSeeder::class,
             UserSeeder::class,
+            AnneeSeeder::class,
             // Add other seeders here as needed
         ]);
     }

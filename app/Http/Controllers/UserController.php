@@ -83,7 +83,7 @@ class UserController extends Controller
             $regionCode = $finds->RegionOrdinal->code; // relation belongsTo
 
             // récupérer la Section (A, B, etc)
-            $sectionCode = $finds->Section->code; // relation belongsTo
+            $sectionCode = $finds->id; // relation belongsTo
 
             // compter combien d'utilisateurs sont déjà dans cette region
             $count = User::where('region_ordinal_id', $finds->region_ordinal_id)->count();

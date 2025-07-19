@@ -41,9 +41,7 @@
                             <thead>
                                 <tr>
                                     <th>Code</th>
-                                    <th>Libelle</th>
-                                    <th>Date debut</th>
-                                    <th>Date fin</th>
+                                    <th>Année budgetaire</th>
                                     <th>Statut</th>
                                     <th>Action</th>
                                 </tr>
@@ -52,9 +50,7 @@
                                 @foreach ($collection as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->libelle }}</td>
-                                        <td>{{ $item->dade_debut }}</td>
-                                        <td>{{ $item->date_fin }}</td>
+                                        <td>{{ $item->annee }}</td>
                                         <td>{{ $item->statut }}</td>
                                         <td class="text-center">
                                             <a href="#" data-bs-toggle="modal"
@@ -105,24 +101,8 @@
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="mb-3">
-                                                    <label>Libelle<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="libelle" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="mb-3">
-                                                    <label>Date debut<span class="text-danger">*</span></label>
-                                                    <input type="date" class="form-control" name="date_debut"
-                                                        required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="mb-3">
-                                                    <label>Date fin<span class="text-danger">*</span></label>
-                                                    <input type="date" class="form-control" name="date_fin"
-                                                        required>
+                                                    <label>Année budgetaire<span class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control" name="annee" required>
                                                 </div>
                                             </div>
                                         </div>

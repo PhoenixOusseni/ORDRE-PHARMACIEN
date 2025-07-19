@@ -267,14 +267,10 @@
                                                     <div class="mb-3">
                                                         <label>Période<span class="text-danger">*</span></label>
                                                         <select class="form-select" name="annee" required>
-                                                            <option>Selectionner ici...</option>
-                                                            <option value="2024">2024</option>
-                                                            <option value="2025">2025</option>
-                                                            <option value="2026">2026</option>
-                                                            <option value="2027">2027</option>
-                                                            <option value="2028">2028</option>
-                                                            <option value="2029">2029</option>
-                                                            <option value="2030">2030</option>
+                                                            <option value="">Selectionner ici...</option>
+                                                            @foreach (App\Models\Annee::where('statut', '=', 'Activé')->get() as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->annee }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

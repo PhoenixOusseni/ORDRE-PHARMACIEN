@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/regions/{region_ordinal_id}', [PageController::class, 'getByRegionOrdinale']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('regions/{regionOrdinaleId}', [LocationController::class, 'getRegions']);
+Route::get('provinces/{regionId}', [LocationController::class, 'getProvinces']);
+Route::get('communes/{provinceId}', [LocationController::class, 'getCommunes']);

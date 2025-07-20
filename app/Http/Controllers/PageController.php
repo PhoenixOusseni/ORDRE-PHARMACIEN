@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Region;
+use App\Models\Commune;
 use App\Models\Fonction;
+use App\Models\Province;
 use App\Models\Cotisation;
 use App\Models\AutreDiplome;
 use Illuminate\Http\Request;
@@ -110,9 +112,18 @@ class PageController extends Controller
         return view('pages.errors_404');
     }
 
-    public function getByRegionOrdinale($regionOrdinaleId)
+    public function getRegions($regionOrdinaleId)
     {
-        $regions = Region::where('region_ordinal_id', $regionOrdinaleId)->get();
-        return response()->json($regions);
+        return response()->json(Region::where('region_ordinal_id', $regionOrdinaleId)->get());
+    }
+
+    public function getProvinces($regionId)
+    {
+        return response()->json(Province::where('region_id', $regionId)->get());
+    }
+
+    public function getCommunes($provinceId)
+    {
+        return response()->json(Commune::where('province_id', $provinceId)->get());
     }
 }

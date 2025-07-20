@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commune extends Model
 {
-    protected $guarded = [
+    protected $guarded = [];
 
-    ];
-
-    function User() {
+    function User()
+    {
         return $this->hasMany(User::class);
+    }
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
     }
 }

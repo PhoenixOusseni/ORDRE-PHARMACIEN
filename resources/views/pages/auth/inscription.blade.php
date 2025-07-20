@@ -131,8 +131,8 @@
                     <div class="row p-2 mb-3" style="background: #eceef1; border-radius: 5px;">
                         <div class="col-md-6 mb-3">
                             <label>Région ordinale<span class="text-danger">*</span></label>
-                            <select name="region_ordinal_id" class="form-select" required>
-                                <option>Selectionner ici...</option>
+                            <select name="region_ordinal_id" id="region_ordinale" class="form-select" required>
+                                <option value="">Sélectionner une région ordinale</option>
                                 @foreach (App\Models\RegionOrdinal::all() as $item)
                                     <option value="{{ $item->id }}">{{ $item->libelle }}</option>
                                 @endforeach
@@ -140,29 +140,20 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Région<span class="text-danger">*</span></label>
-                            <select name="region_id" class="form-select" required>
-                                <option>Selectionner ici...</option>
-                                @foreach (App\Models\Region::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
+                            <select name="region_id" id="region" class="form-select" required>
+                                <option value="">Sélectionner une région</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Province<span class="text-danger">*</span></label>
-                            <select name="province_id" class="form-select" required>
-                                <option>Selectionner ici...</option>
-                                @foreach (App\Models\Province::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
+                            <select name="province_id" id="province" class="form-select" required>
+                                <option value="">Sélectionner une province</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Ville<span class="text-danger">*</span></label>
-                            <select name="commune_id" class="form-select" required>
-                                <option>Selectionner ici...</option>
-                                @foreach (App\Models\Commune::all() as $item)
-                                    <option value="{{ $item->id }}">{{ $item->libelle }}</option>
-                                @endforeach
+                            <select name="commune_id" id="commune" class="form-select" required>
+                                <option value="">Sélectionner une ville</option>
                             </select>
                         </div>
                     </div>
@@ -483,29 +474,51 @@
         document.addEventListener('DOMContentLoaded', () => showStep(1));
     </script>
 
-    {{-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const regionOrdinaleSelect = document.querySelector('select[name="region_ordinal_id"]');
-            const regionSelect = document.querySelector('select[name="region_id"]');
+            const regionOrdinale = document.getElementById('region_ordinale');
+            const region = document.getElementById('region');
+            const province = document.getElementById('province');
+            const commune = document.getElementById('commune');
 
-            regionOrdinaleSelect.addEventListener('change', function() {
-                const selectedId = this.value;
-
-                // Nettoyer le champ Region
-                regionSelect.innerHTML = '<option value="">Chargement...</option>';
-
-                fetch(`/regions/${selectedId}`)
-                    .then(response => response.json())
+            regionOrdinale.addEventListener('change', function() {
+                fetch(`/regions/${this.value}`)
+                    .then(res => res.json())
                     .then(data => {
-                        regionSelect.innerHTML = '<option value=""></option>';
-                        data.forEach(region => {
-                            const option = document.createElement('option');
-                            option.value = region.id;
-                            option.textContent = region.libelle;
-                            regionSelect.appendChild(option);
+                        region.innerHTML = '<option value="">Sélectionner une région</option>';
+                        province.innerHTML = '<option value="">Sélectionner une province</option>';
+                        commune.innerHTML = '<option value="">Sélectionner une commune</option>';
+                        data.forEach(item => {
+                            region.innerHTML +=
+                                `<option value="${item.id}">${item.libelle}</option>`;
+                        });
+                    });
+            });
+
+            region.addEventListener('change', function() {
+                fetch(`/provinces/${this.value}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        province.innerHTML = '<option value="">Sélectionner une province</option>';
+                        commune.innerHTML = '<option value="">Sélectionner une commune</option>';
+                        data.forEach(item => {
+                            province.innerHTML +=
+                                `<option value="${item.id}">${item.libelle}</option>`;
+                        });
+                    });
+            });
+
+            province.addEventListener('change', function() {
+                fetch(`/communes/${this.value}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        commune.innerHTML = '<option value="">Sélectionner une commune</option>';
+                        data.forEach(item => {
+                            commune.innerHTML +=
+                                `<option value="${item.id}">${item.libelle}</option>`;
                         });
                     });
             });
         });
-    </script> --}}
+    </script>
 @endsection

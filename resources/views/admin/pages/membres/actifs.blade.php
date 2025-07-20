@@ -45,8 +45,8 @@
                                     <th>Nom</th>
                                     <th>Email</th>
                                     <th>Téléphone</th>
-                                    <th>Commune</th>
-                                    <th>Documents</th>
+                                    <th>R. Ordinale</th>
+                                    <th>Ville</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -57,12 +57,8 @@
                                         <td>{{ $item->nom }} {{ $item->prenom }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->telephone }}</td>
+                                        <td>{{ $item->RegionOrdinal->libelle ?? 'Non defini' }}</td>
                                         <td>{{ $item->Commune->libelle ?? 'Non defini' }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ asset('storage') . '/' . $item->file }}" target="_blank">
-                                                <i class="me-2 text-warning" data-feather="file"></i>
-                                            </a>
-                                        </td>
                                         <td class="text-center">
                                             <a href="{{ route('gestion_membres.show', $item->id) }}">
                                                 <i class="me-2 text-green" data-feather="eye"></i>

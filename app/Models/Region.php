@@ -6,11 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    protected $guarded = [
+    protected $guarded = [];
 
-    ];
-
-    function User() {
+    function User()
+    {
         return $this->hasMany(User::class);
+    }
+
+    public function regionOrdinale()
+    {
+        return $this->belongsTo(RegionOrdinal::class);
+    }
+
+    public function provinces()
+    {
+        return $this->hasMany(Province::class);
     }
 }

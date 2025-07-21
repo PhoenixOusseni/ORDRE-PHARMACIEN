@@ -266,7 +266,7 @@
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="mb-3">
                                                         <label>Période<span class="text-danger">*</span></label>
-                                                        <select class="form-select" name="annee" required>
+                                                        <select class="form-select" name="annee_id" required>
                                                             <option value="">Selectionner ici...</option>
                                                             @foreach (App\Models\Annee::where('statut', '=', 'Activé')->get() as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->annee }}</option>

@@ -14,8 +14,8 @@ class RegionOrdinalSeeder extends Seeder
     public function run(): void
     {
         DB::table('region_ordinals')->insert([
-            ['libelle' => 'REGION ORDINALE DE L’OUEST', 'code' => 'R2'],
             ['libelle' => 'REGION ORDINALE DU CENTRE', 'code' => 'R1'],
+            ['libelle' => 'REGION ORDINALE DE L’OUEST', 'code' => 'R2'],
             ['libelle' => 'REGION ORDINALE DE L’EST', 'code' => 'R3'],
         ]);
     }

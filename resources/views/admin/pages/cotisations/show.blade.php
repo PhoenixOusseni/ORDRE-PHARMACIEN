@@ -47,7 +47,7 @@
                                     </tr>
                                     <tr>
                                         <th>Période</th>
-                                        <td>{{ $finds->annee }}</td>
+                                        <td>{{ $finds->Annee->annee }}</td>
                                     </tr>
                                     <tr>
                                         <th>Mode reglement</th>

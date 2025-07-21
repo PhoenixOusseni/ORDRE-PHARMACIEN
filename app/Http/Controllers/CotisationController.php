@@ -53,7 +53,7 @@ class CotisationController extends Controller
     {
         // Retrieve all cotisations
         $users = User::where('statut', '=', 'Actif')->orderBy('nom', 'desc')->get();
-        $annees = Annee::where('statut', 'Actif')->get();
+        $annees = Annee::where('statut', 'Activé')->get();
 
         return view('admin.pages.cotisations.create', compact('users', 'annees'));
     }
@@ -77,7 +77,7 @@ class CotisationController extends Controller
         Cotisation::create([
             'user_id' => $request->user_id,
             'date' => $request->date,
-            'annee' => $request->annee,
+            'annee_id' => $request->annee_id,
             'mode' => $request->mode,
             'montant' => $request->montant,
             'desc' => $request->desc,

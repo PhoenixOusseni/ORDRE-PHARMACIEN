@@ -64,7 +64,7 @@
                                         <td>{{ $item->code }}</td>
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->User->nom }} {{ $item->User->prenom }}</td>
-                                        <td>{{ $item->annee }}</td>
+                                        <td>{{ $item->Annee->annee }}</td>
                                         <td>{{ $item->mode }}</td>
                                         <td>{{ number_format($item->montant, 0, ',', ' ') }}</td>
                                         <td>{{ $item->annee }}</td>

@@ -57,7 +57,6 @@
                                     <th>Période</th>
                                     <th>Mode paiement</th>
                                     <th>Montant</th>
-                                    <th>Période</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -67,10 +66,9 @@
                                         <td>{{ $item->code }}</td>
                                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $item->User->nom }} {{ $item->User->prenom }}</td>
-                                        <td>{{ $item->annee }}</td>
+                                        <td>{{ $item->Annee->annee }}</td>
                                         <td>{{ $item->mode }}</td>
                                         <td>{{ number_format($item->montant, 0, ',', ' ') }}</td>
-                                        <td>{{ $item->annee }}</td>
                                         <td class="text-center">
                                             <a class="text-center"
                                                 href="{{ route('gestion_cotisations.show', [$item->id]) }}">

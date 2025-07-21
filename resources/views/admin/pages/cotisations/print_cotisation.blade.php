@@ -49,7 +49,7 @@
                     <td>
                         <p>Pour paiement de la cotisation à l'ordre des pharmaciens</p>
                     </td>
-                    <td class="text-center">{{ $finds->periode }} {{ $finds->annee }}</td>
+                    <td class="text-center">{{ $finds->periode }} {{ $finds->Annee->annee }}</td>
                     <td class="text-center">{{ number_format($finds->montant, 0, ',', ' ') }}</td>
                 </tr>
             </table>

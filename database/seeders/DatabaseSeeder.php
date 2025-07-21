@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Roleseeder::class,
             Sectionseeder::class,
-            RegionOrdinalSeeder::class,
-            RegionSeeder::class,
-            ProvinceSeeder::class,
-            CommuneSeeder::class,
-            ResponsabiliteSeeder::class,
-            UserSeeder::class,
-            AnneeSeeder::class,
+            // RegionOrdinalSeeder::class,
+            // RegionSeeder::class,
+            // ProvinceSeeder::class,
+            // CommuneSeeder::class,
+            // ResponsabiliteSeeder::class,
+            // UserSeeder::class,
+            // AnneeSeeder::class,
             // Add other seeders here as needed
         ]);
     }

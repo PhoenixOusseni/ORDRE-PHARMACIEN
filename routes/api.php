@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\CherchController;
 use App\Http\Controllers\LocationController;
 
 /*
@@ -16,6 +17,8 @@ use App\Http\Controllers\LocationController;
 |
 */
 
-Route::get('regions/{regionOrdinaleId}', [LocationController::class, 'getRegions']);
-Route::get('provinces/{regionId}', [LocationController::class, 'getProvinces']);
-Route::get('communes/{provinceId}', [LocationController::class, 'getCommunes']);
+// Route::get('regions/{regionOrdinaleId}', [LocationController::class, 'getRegions']);
+// Route::get('provinces/{regionId}', [LocationController::class, 'getProvinces']);
+// Route::get('communes/{provinceId}', [LocationController::class, 'getCommunes']);
+
+Route::get('search-membre', [CherchController::class, 'searchmember'])->name('searchmember');

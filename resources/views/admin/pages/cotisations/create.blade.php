@@ -43,9 +43,9 @@
                                     <div class="mb-3">
                                         <label>Membre <span class="text-danger">*</span></label>
                                         <select name="user_id" class="form-control js-example-basic-single">
-                                            {{-- @foreach ($users as $item)
+                                            @foreach ($users as $item)
                                                 <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->nom }} {{ $item->prenom }}</option>
-                                            @endforeach --}}
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label>Somme<span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" id="montant_cotisation" readonly />
+                                        <input type="number" class="form-control" name="montant_cotisation" required/>
                                     </div>
                                 </div>
                             </div>
@@ -116,11 +116,11 @@
     </div>
 
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.js-example-basic-single').select2({
                 ajax: {
-                    url: 'searchmember',
+                    url: '/api/searchmember',
                     dataType: 'json',
                     delay: 250,
                     data: function(params) {
@@ -167,5 +167,5 @@
             document.getElementById('code').value = selectedOption.getAttribute('data-code');
             document.getElementById('montant_cotisation').value = selectedOption.getAttribute('data-montant_cotisation');
         });
-    </script>
+    </script> --}}
 @endsection

@@ -50,5 +50,3 @@ Route::post('deconnexion', [AuthController::class, 'logout'])->name('logout');
 Route::get('regions/{regionOrdinaleId}', [PageController::class, 'getRegions']);
 Route::get('provinces/{regionId}', [PageController::class, 'getProvinces']);
 Route::get('communes/{provinceId}', [PageController::class, 'getCommunes']);
-Route::get('search-membre', [CherchController::class, 'searchmember'])->name('searchmember');
-

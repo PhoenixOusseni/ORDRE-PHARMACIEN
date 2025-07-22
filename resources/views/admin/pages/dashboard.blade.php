@@ -67,7 +67,6 @@
                                         <td>{{ $item->Annee->annee }}</td>
                                         <td>{{ $item->mode }}</td>
                                         <td>{{ number_format($item->montant, 0, ',', ' ') }}</td>
-                                        <td>{{ $item->annee }}</td>
                                         <td class="text-center">
                                             <a class="text-center"
                                                 href="{{ route('gestion_cotisations.show', [$item->id]) }}">

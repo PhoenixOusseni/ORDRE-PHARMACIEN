@@ -9,6 +9,7 @@ use App\Http\Controllers\FonctionController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CotisationController;
 use App\Http\Controllers\AutreDiplomeController;
+use App\Http\Controllers\CherchController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -44,6 +45,10 @@ Route::post('add_user', [AuthController::class, 'add_user'])->name('register');
 Route::post('connexion', [AuthController::class, 'login'])->name('login');
 Route::post('deconnexion', [AuthController::class, 'logout'])->name('logout');
 
+
+//Les route api
 Route::get('regions/{regionOrdinaleId}', [PageController::class, 'getRegions']);
 Route::get('provinces/{regionId}', [PageController::class, 'getProvinces']);
 Route::get('communes/{provinceId}', [PageController::class, 'getCommunes']);
+Route::get('search-membre', [CherchController::class, 'searchmember'])->name('searchmember');
+

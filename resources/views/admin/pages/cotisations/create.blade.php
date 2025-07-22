@@ -39,14 +39,20 @@
                         <form method="POST" action="{{ route('gestion_cotisations.store') }}">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label>Membre <span class="text-danger">*</span></label>
-                                        <select name="user_id" class="form-control">
-                                            @foreach ($users as $item)
+                                        <select name="user_id" class="form-control js-example-basic-single">
+                                            {{-- @foreach ($users as $item)
                                                 <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->nom }} {{ $item->prenom }}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label>Code<span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="code" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +71,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="mb-3">
                                         <label>Somme<span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" name="montant" />
+                                        <input type="number" class="form-control" id="montant_cotisation" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -108,4 +114,58 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2({
+                ajax: {
+                    url: 'searchmember',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            q: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        params.page = params.page || 1;
+                        return {
+                            results: $.map(data.items, function(item) {
+                                return {
+                                    id: item.id,
+                                    text: item.code,
+                                    code: item.code,
+                                };
+                            }),
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                placeholder: 'Rechercher un membre...',
+                minimumInputLength: 2,
+            }).on('select2:select', function(e) {
+                var data = e.params.data;
+                $('#nom').val(data.nom);
+                $('#prenom').val(data.prenom);
+                $('#code').val(data.code);
+                $('#montant_cotisation').val(data.montant_cotisation);
+            });
+        });
+    </script>
+
+
+    <script>
+        document.getElementById('locationSelect').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex];
+            document.getElementById('nom').value = selectedOption.getAttribute('data-nom');
+            document.getElementById('prenom').value = selectedOption.getAttribute('data-prenom');
+            document.getElementById('code').value = selectedOption.getAttribute('data-code');
+            document.getElementById('montant_cotisation').value = selectedOption.getAttribute('data-montant_cotisation');
+        });
+    </script>
 @endsection
